@@ -3,7 +3,7 @@ process.stdin.setEncoding("utf8");
 
 /* Setting up the webserver and writing HTML content in it*/
 const http = require("http");
-const portNumber = 4000;
+//const portNumber = 4000;
 const httpSuccessStatus = 200;
 const webServer = http.createServer((request, response) => {
   response.writeHead(httpSuccessStatus, { "Content-type": "text/html" });
@@ -13,7 +13,7 @@ const webServer = http.createServer((request, response) => {
 /* Setting up Express */
 const express = require("express"); /* Accessing express module */
 const app = express();
-
+const portNumber = process.env.PORT || 4000;
 /* Access current path */
 const path = require("path");
 const { type } = require("os");
@@ -245,6 +245,6 @@ app.get("/account-home", (request, response) => {
   response.render("home-page", variables);
 });
 
-app.post("");
-
-app.listen(portNumber);
+app.listen(portNumber, () => {
+  console.log(`Started on port ${portNumber}`);
+});
