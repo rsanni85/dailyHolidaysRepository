@@ -1,0 +1,40 @@
+<!-- Home/login page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Daily Holidays Login Page</title>
+    <link href="style.css" type="text/css" />
+</head>
+
+<body>
+    <div>
+        <div class="loginHeader">
+            <h1>Daily Holidays Login Page</h1>
+        </div>
+        <form id="form" action="http://localhost:<%- portNumber %>/home-page" method="post">
+            <div class="inputBox">
+                <input name="email" type="email" placeholder="example@gmail.com" required>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" required />
+
+            </div>
+            <div id="loginStatusDiv">
+                <%- loginStatus %>
+            </div>
+
+            <br />
+            <input type="reset" />
+            <input type="submit" value="Login" />
+            <br>
+            <a href="/registration">Create Account</a>
+
+        </form>
+    </div>
+
+
+</body>
+
+</html>

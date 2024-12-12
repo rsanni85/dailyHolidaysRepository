@@ -1,0 +1,35 @@
+<!-- Home/login page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Daily Holidays Login Page</title>
+    <link href="style.css" type="text/css" />
+</head>
+
+<body>
+    <h1>Daily Holidays Registration Page</h1>
+    <div>
+        <form action="http://localhost:<%- portNumber %>/process-registration" method="post">
+            <h2>Register Below</h2>
+            <fieldset>
+                <label><strong>Name</strong><input type="text" name="name" /></label>
+                <br />
+                <label><strong>Email</strong><input type="email" name="email" /></label>
+                <br />
+                <label><strong>Password</strong><input type="password" name="password" /></label>
+                <br />
+            </fieldset>
+
+            <br />
+            <input type="reset" />
+            <input type="submit" value="Create Account" />
+            <br>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
