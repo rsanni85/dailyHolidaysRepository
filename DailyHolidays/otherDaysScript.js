@@ -6,8 +6,8 @@ async function viewHolidays() {
     const todayMonth = todayArr[1];
     const todayYear = todayArr[0];
     let country = document.getElementById("country").value;
-
-    const apiURL = `https://holidays.abstractapi.com/v1/?api_key=9ef7882199014c7eb5cdadc2b91c52f2&country=${country}&year=${todayYear}&month=${todayMonth}&day=${todayDate}`;
+    const apiKey = "<%= holidayApiKey %>";
+    const apiURL = `https://holidays.abstractapi.com/v1/?api_key=${apiKey}&country=${country}&year=${todayYear}&month=${todayMonth}&day=${todayDate}`;
     let holidayData = fetchHolidayInfo(apiURL, todayYear, todayMonth, todayDate);
 
     displayString = "";
