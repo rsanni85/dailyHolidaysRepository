@@ -1,5 +1,5 @@
 package-lock.json
 node_modules/*
 credentials/.env
-homePageScript.js
-otherDayScript.js
+# homePageScript.js
+# otherDayScript.js
