@@ -18,18 +18,25 @@
                 <input name="email" type="email" placeholder="example@gmail.com" required>
             </div>
             <div class="inputBox">
-                <input type="password" name="password" required />
+                <input type="password" name="password" placeholder="Enter Password" required />
 
             </div>
             <div id="loginStatusDiv">
                 <%- loginStatus %>
             </div>
+            <div class="submitLogin">
+                <button class="submitButton" id="submit"></button>
+                <label for="submit">Log In</label>
+            </div>
+            <div class="createAccount">
+                <p>Create Account <a href="/registration">here</a></p>
+            </div>
 
-            <br />
+            <!-- <br />
             <input type="reset" />
             <input type="submit" value="Login" />
             <br>
-            <a href="/registration">Create Account</a>
+            <a href="/registration">Create Account</a> -->
 
         </form>
     </div>
