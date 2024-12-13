@@ -526,33 +526,64 @@
             document.getElementById("displayHolidays").innerHTML = displayString;
         }
 
-        async function getholidayResults(holidayData) {
-            console.log("PASSED IN HOLIDAY DATA: " + `${holidayData}`);
-            let paramHolidayData = holidayData;
-            resultsArr = [];
-            paramHolidayData.then(result => {
-                    //console.log("RESULT: " + JSON.stringify(result));
-                    console.log("H");
-                    if (Array.isArray(result)) {
-                        if (JSON.parse(JSON.stringify(result)).length > 0) {
-                            // displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
-                            JSON.parse(JSON.stringify(result)).forEach(holiday =>
-                                holidayData.push({ holidayName: holiday.name, type: holiday.type, location: holiday.location }));
-                            // displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
-                            // displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
-                            // document.getElementById("displayHolidays").innerHTML = displayString;
-                        }
-                        return holidayData;
+        // async function getholidayResults(holidayData) {
+        //     console.log("PASSED IN HOLIDAY DATA: " + `${holidayData}`);
+        //     let paramHolidayData = holidayData;
+        //     resultsArr = [];
+        //     paramHolidayData.then(result => {
+        //             //console.log("RESULT: " + JSON.stringify(result));
+        //             console.log("H");
+        //             if (Array.isArray(result)) {
+        //                 if (JSON.parse(JSON.stringify(result)).length > 0) {
+        //                     // displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
+        //                     JSON.parse(JSON.stringify(result)).forEach(holiday =>
+        //                         holidayData.push({ holidayName: holiday.name, type: holiday.type, location: holiday.location }));
+        //                     // displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
+        //                     // displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
+        //                     // document.getElementById("displayHolidays").innerHTML = displayString;
+        //                 }
+        //                 return holidayData;
 
-                    } else {
-                        console.log("E");
-                        console.log("Resolved value is not iterable:", result);
+        //             } else {
+        //                 console.log("E");
+        //                 console.log("Resolved value is not iterable:", result);
+        //             }
+        //         })
+        //         .catch(error => {
+        //             console.error("Error :", error);
+        //         });
+        // }
+
+        async function getholidayResults(holidayData) {
+            console.log("PASSED IN HOLIDAY DATA:", holidayData);
+            let resultsArr = [];
+
+            try {
+                // Wait for the promise to resolve
+                const result = await holidayData;
+
+                if (Array.isArray(result)) {
+                    if (result.length > 0) {
+                        // Process each holiday
+                        result.forEach(holiday => {
+                            resultsArr.push({
+                                holidayName: holiday.name,
+                                type: holiday.type,
+                                location: holiday.location,
+                            });
+                        });
+                        console.log("Processed Results:", resultsArr);
                     }
-                })
-                .catch(error => {
-                    console.error("Error :", error);
-                });
+                } else {
+                    console.log("Resolved value is not iterable:", result);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+
+            return resultsArr;
         }
+
 
         async function fetchHolidayInfo(apiURL, year, month, day) {
             try {
