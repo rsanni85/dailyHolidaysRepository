@@ -5,31 +5,141 @@
 <head>
     <meta charset="utf-8" />
     <title>Daily Holidays Login Page</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Gowun+Batang&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Trirong:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+        * {
+            /* remove default margins and paddings on tags */
+            margin: 0;
+            padding: 0;
+            /* includes margins and paddings in an element's width and height calculation */
+            box-sizing: border-box;
+            /* uses the Montserrat font */
+            font-family: "Montserrat", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* background: #dfdfdf; */
+            background: url("https://i.ibb.co/DMz4GSP/light-background-wallpaper-1920x1080.jpg");
+            background-size: cover;
+            /* background-image: url("DailyHolidays/light_background-wallpaper-1920x1080.jpg"); */
+        }
+
+        .signUpBox {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 470px;
+            height: 480px;
+            padding: 30px;
+            border-width: 3px;
+            border-color: rgba(255, 255, 255, 0);
+            border-style: solid;
+            border-radius: 10px;
+            background-color: rgb(237, 246, 247);
+        }
+
+        .submitLogin{
+            display: flex;
+            justify-content: center;
+        }
+
+        .logIn{
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .signUpHeader {
+            color: #57595b;
+            font-size: 30px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .inputBox .inputField {
+            width: 100%;
+            height: 60px;
+            font-size: 17px;
+            padding: 0 25px;
+            margin-bottom: 15px;
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+            transition: .3s;
+        }
+
+        ::placeholder {
+            font-weight: 500;
+            color: #222;
+        }
+
+        .submitLogin .submitButton{
+            width: 30%;
+            height: 50px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            background-color: #4c4d4e;
+            border-style: solid;
+            border-radius: 10px;
+            border-color: #4c4d4e;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .submitLogin .submitButton:hover{
+            width: 24%;
+            height: 40px;
+            background-color: #787c81;
+            border-style: solid;
+            border-radius: 10px;
+            border-color: #787c81;
+            justify-content: center;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+    </style>
+
 </head>
 
 <body>
-    <h1>Daily Holidays Registration Page</h1>
-    <div>
-        <form action="/process-registration" method="post">
-            <h2>Register Below</h2>
-            <fieldset>
-                <label><strong>Name</strong><input type="text" name="name" /></label>
-                <br />
-                <label><strong>Email</strong><input type="email" name="email" /></label>
-                <br />
-                <label><strong>Password</strong><input type="password" name="password" /></label>
-                <br />
-            </fieldset>
-
-            <br />
-            <input type="reset" />
-            <input type="submit" value="Create Account" />
+    <div class="signUpBox">
+        <div class="signUpHeader">
+            <h3>Sign Up</h3>
             <br>
+        </div class="">
+        <form id="form" action="/process-registration" method="post">
+            <div class="inputBox">
+                <input class="inputField" name="name" type="text" placeholder="Name" required>
+            </div>
+            <div class="inputBox">
+                <input class="inputField" name="email" type="email" placeholder="example@gmail.com" required>
+            </div>
+            <div class="inputBox">
+                <input class="inputField" type="password" name="password" placeholder="Enter Password" required />
 
+            </div>
+
+            <div class="submitLogin">
+                <button class="submitButton" id="submit">Create Account</button>
+                <!-- <label for="submit">Log In</label> -->
+            </div>
+            <br>
+            <div class="logIn">
+                <span id="signUpLink">Already have an account? <a href="/">Sign in!</a></span>
+            </div>
         </form>
-    </div>
-
 </body>
 
 </html>
