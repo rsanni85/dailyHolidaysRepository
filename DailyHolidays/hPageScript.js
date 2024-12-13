@@ -3,6 +3,7 @@ async function viewHolidays() {
     const todayDate = "" + today.getDate();
     const todayMonth = "" + (today.getMonth() + 1);
     const todayYear = "" + today.getFullYear();
+    // let country = document.getElementById("country").value;
     const countries = [
         "Afghanistan",
         "Albania",
@@ -238,53 +239,64 @@ async function viewHolidays() {
         "Zimbabwe"
     ];
 
-    displayString = "";
-
-    //let country = document.getElementById("country").value;
-    let todaysHolidays = [];
+    displayString = "<table border='1'><th>Country</th><th>Holiday</th><th>Type</th>";
     const apiKey = "<%= holidayApiKey %>";
     countries.forEach(country => {
         const apiURL = `https://holidays.abstractapi.com/v1/?api_key=${apiKey}&country=${country}&year=${todayYear}&month=${todayMonth}&day=${todayDate}`;
         let holidayData = fetchHolidayInfo(apiURL, todayYear, todayMonth, todayDate);
-        let holidayResults = getholidayResults(holidayData);
-        console.log(`Country: ${country} + Results: ${holidayResults}`);
-        holidayResults.forEach(holiday =>{
-            todaysHolidays.push(holiday);
-        });
-    });
 
-    todaysHolidays.forEach(holiday => {
-        displayString += `Country: ${holiday.location} --- Holiday: ${holiday.name} --- Type: ${holiday.type}`;
-    });
-
-    document.getElementById("displayHolidays").innerHTML = displayString;
-}
-
-async function getholidayResults(holidayData) {
-    resultsArr = [];
-    holidayData
-        .then(result => {
-            //console.log("RESULT: " + JSON.stringify(result));
-            console.log("H");
-            if (Array.isArray(result)) {
-                if (JSON.parse(JSON.stringify(result)).length > 0) {
-                    // displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
+        holidayData
+            .then(result => {
+                //console.log("RESULT: " + JSON.stringify(result));
+                console.log("H");
+                if (Array.isArray(result)) {
                     JSON.parse(JSON.stringify(result)).forEach(holiday =>
-                        holidayData.push({ holidayName: holiday.name, type: holiday.type, location: holiday.location }));
-                    // displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
-                    // displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
+                        displayString += `<tr><td>${holiday.location}</td><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
+                    // JSON.parse(JSON.stringify(result)).forEach(holiday =>
+                    //     displayString += `<tr><td><input type="checkbox" name="favorite"></td><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
+                    // let checkedHolidays = [...document.querySelectorAll('input[name="favorite"]:checked')]
+                    //     .map(checkbox => checkbox.value);
+                    // let checkedHolidaysString = "";
+                    // if (checkedHolidays.length == 0) {
+                    //     displayString = `<p>The chosen country has no holidays today.</p>`;
+                    // }
+                    // checkedHolidays.forEach(h => checkedHolidaysString += h.name + " ");
+                    // //displayString += `<p name="checkedHolidayString">${checkedHolidaysString}</p>`;
+                    // console.log("checked string: " + checkedHolidaysString);
+                    // displayString += `</table><br><input type="button" onclick="location.href='/view-favorite-holidays'" value="Store favorites"><button onclick="viewHolidays()">View today's holiday(s)</button>`;
                     // document.getElementById("displayHolidays").innerHTML = displayString;
-                }
-                return holidayData;
 
-            } else {
-                console.log("E");
-                console.log("Resolved value is not iterable:", result);
-            }
-        })
-        .catch(error => {
-            console.error("Error :", error);
-        });
+                    // //let checkedHolidays = document.querySelectorAll('input[type="favorite"]:checked');
+
+
+
+
+                    // checkedHolidays.forEach(holiday => {
+                    //     console.log("-------------")
+                    //     console.log(holiday); // Logs the checked status of each checkbox
+                    //     console.log("holiday is: " + typeof holiday);
+                    // });
+
+                } else {
+                    console.log("E");
+                    console.log("Resolved value is not iterable:", result);
+                }
+            })
+            .catch(error => {
+                console.error("Error :", error);
+            });
+
+    });
+    displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
+    document.getElementById("displayHolidays").innerHTML = displayString;
+
+    //holidayDataArray = [...Object.values(holidayData)];
+    //displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
+    //holidayData.forEach(holiday => displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
+    //holidayData.forEach(holiday => console.log(`${holiday.name}`));
+    //displayString += "</table>";
+    //document.getElementById("displayHolidays").innerHTML = displayString;
+
 }
 
 async function fetchHolidayInfo(apiURL, year, month, day) {
