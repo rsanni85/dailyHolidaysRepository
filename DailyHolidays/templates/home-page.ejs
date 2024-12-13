@@ -527,6 +527,7 @@
         }
 
         async function getholidayResults(holidayData) {
+            console.log("PASSED IN HOLIDAY DATA: " + `${holidayData}`);
             resultsArr = [];
             holidayData
                 .then(result => {
