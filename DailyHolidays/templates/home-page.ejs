@@ -528,9 +528,9 @@
 
         async function getholidayResults(holidayData) {
             console.log("PASSED IN HOLIDAY DATA: " + `${holidayData}`);
+            let paramHolidayData = holidayData;
             resultsArr = [];
-            holidayData
-                .then(result => {
+            paramHolidayData.then(result => {
                     //console.log("RESULT: " + JSON.stringify(result));
                     console.log("H");
                     if (Array.isArray(result)) {
