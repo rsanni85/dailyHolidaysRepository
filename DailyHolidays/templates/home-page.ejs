@@ -338,7 +338,8 @@
                 let jokePartOne = data.setup;
                 console.log("setup: " + jokePartOne);
                 let jokePartTwo = data.delivery;
-                return [jokePartOne, jokePartTwo]; // Return the data for further use
+                let joke = [jokePartOne, jokePartTwo];
+                return joke; // Return the data for further use
             } catch (err) {
                 console.error('Error fetching holiday info:', err);
                 return null; // Return null in case of an error
