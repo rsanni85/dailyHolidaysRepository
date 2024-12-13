@@ -11,9 +11,12 @@
 
 
         * {
+            /* remove default margins and paddings on tags */
             margin: 0;
             padding: 0;
+            /* includes margins and paddings in an element's width and height calculation */
             box-sizing: border-box;
+            /* uses the Montserrat font */
             font-family: "Montserrat", sans-serif;
         }
 
@@ -56,13 +59,24 @@
             font-weight: 500;
             color: #222;
         }
+
+        .submitLogin .submitButton{
+            width: 100%;
+            height: 30px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border-style: solid;
+            border-color: black;
+            color:#222;
+        }
     </style>
 </head>
 
 <body>
     <div class="loginBox">
         <div class="loginHeader">
-            <h1>Daily Holidays Login Page</h1>
+            <h2>Login</h2>
+            <br>
         </div>
         <form id="form" action="/home-page" method="post">
             <div class="inputBox">
