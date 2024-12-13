@@ -247,6 +247,7 @@ async function viewHolidays() {
         const apiURL = `https://holidays.abstractapi.com/v1/?api_key=${apiKey}&country=${country}&year=${todayYear}&month=${todayMonth}&day=${todayDate}`;
         let holidayData = fetchHolidayInfo(apiURL, todayYear, todayMonth, todayDate);
         let holidayResults = getholidayResults(holidayData);
+        console.log(`Country: ${country} + Results: ${holidayResults}`);
         holidayResults.forEach(holiday =>{
             todaysHolidays.push(holiday);
         });
