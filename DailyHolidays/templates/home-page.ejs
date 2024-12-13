@@ -281,7 +281,9 @@
                     console.log("H");
                     if (Array.isArray(result)) {
                         if (JSON.parse(JSON.stringify(result)).length == 0) {
-                            displayString += "The chosen country has no holidays today. Check out the stats for another country!";
+                            let jokeArr = fetchRandomJoke();
+                            displayString += "The chosen country has no holidays today. Check out the stats for another country!<br>For now, enjoy this joke:<br>";
+                            displayString += `<h4>${jokeArr[0]}</h4><br><h4>${jokeArr[1]}<h4>`;
                             displayString += `<br><button onclick="viewHolidays()">View holiday(s)</button>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         } else {
@@ -291,30 +293,6 @@
                             displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         }
-                        // JSON.parse(JSON.stringify(result)).forEach(holiday =>
-                        //     displayString += `<tr><td><input type="checkbox" name="favorite"></td><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
-                        // let checkedHolidays = [...document.querySelectorAll('input[name="favorite"]:checked')]
-                        //     .map(checkbox => checkbox.value);
-                        // let checkedHolidaysString = "";
-                        // if (checkedHolidays.length == 0) {
-                        //     displayString = `<p>The chosen country has no holidays today.</p>`;
-                        // }
-                        // checkedHolidays.forEach(h => checkedHolidaysString += h.name + " ");
-                        // //displayString += `<p name="checkedHolidayString">${checkedHolidaysString}</p>`;
-                        // console.log("checked string: " + checkedHolidaysString);
-                        // displayString += `</table><br><input type="button" onclick="location.href='/view-favorite-holidays'" value="Store favorites"><button onclick="viewHolidays()">View today's holiday(s)</button>`;
-                        // document.getElementById("displayHolidays").innerHTML = displayString;
-
-                        // //let checkedHolidays = document.querySelectorAll('input[type="favorite"]:checked');
-
-
-
-
-                        // checkedHolidays.forEach(holiday => {
-                        //     console.log("-------------")
-                        //     console.log(holiday); // Logs the checked status of each checkbox
-                        //     console.log("holiday is: " + typeof holiday);
-                        // });
 
                     } else {
                         console.log("E");
@@ -324,13 +302,6 @@
                 .catch(error => {
                     console.error("Error :", error);
                 });
-
-            //holidayDataArray = [...Object.values(holidayData)];
-            //displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
-            //holidayData.forEach(holiday => displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
-            //holidayData.forEach(holiday => console.log(`${holiday.name}`));
-            //displayString += "</table>";
-            //document.getElementById("displayHolidays").innerHTML = displayString;
 
         }
 
@@ -351,6 +322,28 @@
                 console.error('Error fetching holiday info:', err);
                 return null; // Return null in case of an error
             }
+        }
+
+        async function fetchRandomJoke() {
+            const apiURL = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious,racist,sexist,explicit&type=twopart";
+            try {
+                const options = { method: 'GET' };
+                const response = await fetch(apiURL, options);
+
+                if (response.status != 200) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                let jokePartOne = data.setup;
+                console.log("setup: " + jokePartOne);
+                let jokePartTwo = data.delivery;
+                return [jokePartOne, jokePartTwo]; // Return the data for further use
+            } catch (err) {
+                console.error('Error fetching holiday info:', err);
+                return null; // Return null in case of an error
+            }
+
         }
 
         //     fetch(`https://holidays.abstractapi.com/v1/?api_key=9ef7882199014c7eb5cdadc2b91c52f2&country=US&year=${todayYear}&month=${todayMonth}&day=${todayDate}`, options)
