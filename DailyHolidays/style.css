@@ -13,7 +13,8 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #dfdfdf;
+    /* background: #dfdfdf; */
+    background-image: url("light_background-wallpaper-1920x1080.jpg");
 }
 
 .loginBox{
