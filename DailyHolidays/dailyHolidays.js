@@ -175,7 +175,7 @@ app.get("/login-page", async (request, response) => {
   // }
 });
 
-app.post("/home-page", async (request, response) => {
+app.get("/home-page", async (request, response) => {
   const apiKey = process.env.DAILY_HOLIDAYS_API_KEY;
 
   let variables = {
