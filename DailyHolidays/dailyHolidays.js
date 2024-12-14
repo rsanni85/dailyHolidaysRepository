@@ -232,9 +232,10 @@ app.get("/view-favorite-holidays", async (request, response) => {
 });
 
 app.get("/other-days", (request, response) => {
-  console.log("I got here at least.")
+  const apiKey = process.env.DAILY_HOLIDAYS_API_KEY;
   const variables = {
     portNumber: portNumber,
+    holidayApiKey: apiKey,
   }
   response.render("other-days", variables);
 });
