@@ -65,6 +65,19 @@
             color: #57595b;
         }
 
+        .boxContent #selectCountry{
+            font-size: 17px;
+            color: #57595b;
+        }
+
+        .displayHolidays{
+            justify-content: center;
+        }
+
+        .displayHolidays #viewOtherDay{
+            text-decoration: none;
+        }
+
     </style>
 </head>
 
@@ -74,14 +87,13 @@
             <h3>Today's Holidays Around The World</h3>
         </div>
         <div class="boxContent">
-            <a href="/other-days">View the holidays for another day</a>
             <br>
             <!--
         <a href="/favorite-holidays">My Favorite Holidays</a>
         <br>
         -->
             <div id="todaysHolidays">
-                <label><strong>Select a country: </strong></label>
+                <label id="selectCountry"><strong>Select a country: </strong></label>
                 <select id="country">
                     <option value="AF">Afghanistan (AF)</option>
                     <option value="AL">Albania (AL)</option>
@@ -319,6 +331,7 @@
             </div>
             <div class="displayHolidays" id="displayHolidays">
                 <button onclick="viewHolidays()">View today's holiday(s)</button>
+                <a href="/other-days">View the holidays for another day</a>
                 <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
             </div>
         </div>
@@ -355,6 +368,7 @@
                             JSON.parse(JSON.stringify(result)).forEach(holiday =>
                                 displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
                             displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
+                            displayString += `<a id="viewOtherDay" href="/other-days">View the holidays for another day</a>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         }
 
