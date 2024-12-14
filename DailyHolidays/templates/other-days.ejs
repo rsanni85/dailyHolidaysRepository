@@ -9,14 +9,18 @@
 </head>
 
 <body>
-    <h1>View Daily Holidays from Other Days</h1>
+    <div class="homeBox">
+    <div class="homeHeader"></div>
+    <h3>View Daily Holidays from Other Days</h3>
+</div>
     <div>
-        <a href="/home-page">View the holidays for today</a>
+        <!-- <a href="/home-page">View the holidays for today</a> -->
         <br>
         <!--
         <a href="/favorite-holidays">My Favorite Holidays</a>
         <br>
         -->
+        <div class="boxContent">
         <div id="otherDaysHolidays">
             <form>
                 <label><strong>Select a country: </strong></label>
@@ -259,11 +263,17 @@
             </form>
         </div>
         <div id="displayHolidays">
-            <button onclick="viewHolidays()">View today's holiday(s)</button>
+            <div>
+                <button onclick="viewHolidays()">    View today's holiday(s)    </button>
+            </div>
+            <div id="otherDayLink">
+                <a href="/other-days">View the holidays</a>
+            </div>
+            <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
         </div>
-
     </div>
-
+    </div>
+</div>
     <script>
         async function viewHolidays() {
             let today = document.getElementById("otherDate").value;
