@@ -92,7 +92,7 @@ app.post("/process-registration", async (request, response) => {
     await client.connect();
     /* Inserting one person */
     let person = { name: userName, email: userEmail, password: userPassword };
-    let filter = { email: inputEmail};
+    let filter = { email: inputEmail };
     let result = await client.db(usersCollection.db)
       .collection(usersCollection.collection)
       .findOne(filter);
@@ -109,10 +109,10 @@ app.post("/process-registration", async (request, response) => {
         loginStatus: "",
       };
       await client
-      .db(usersCollection.db)
-      .collection(usersCollection.collection)
-      .insertOne(person);
-    response.render("login-page", variables);
+        .db(usersCollection.db)
+        .collection(usersCollection.collection)
+        .insertOne(person);
+      response.render("login-page", variables);
       //response.status(400).send(`<a href="http://localhost:${portNumber}/login-page">We couldn't verify this account. Please try again.</a>`);
     }
     // await client
