@@ -8,6 +8,6 @@
 
 **YouTube Video Link:** https://www.youtube.com/watch?v=sZWGcEf1gtg
 
-**APIs:** Public Holidays https://docs.abstractapi.com/holidays?, Jokes https://jokeapi.dev/
+**APIs:** Public Holidays https://docs.abstractapi.com/holidays, Jokes https://jokeapi.dev/
 
 **Contact Email:**  rsanni85@terpmail.umd.edu
