@@ -94,7 +94,7 @@ app.post("/process-registration", async (request, response) => {
     await client.connect();
 
     /* Check if a user has an existing account*/
-    let filterRegister = { email: inputEmail };
+    let filterRegister = { email: userEmail };
     let resultRegister = await client
       .db(usersCollection.db)
       .collection(usersCollection.collection)
@@ -102,7 +102,6 @@ app.post("/process-registration", async (request, response) => {
     if (resultRegister) {
       let registrationStatus = "We found an account with this email. Want to log in instead?";
       let updatedVariables = {
-        portNumber: portNumber,
         registrationStatus: registrationStatus,
       };
       response.render("registration", updatedVariables);
