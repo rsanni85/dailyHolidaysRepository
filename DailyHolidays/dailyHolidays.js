@@ -106,6 +106,7 @@ app.post("/process-registration", async (request, response) => {
       };
       response.render("registration", updatedVariables);
     } else {
+      let person = { name: userName, email: userEmail, password: userPassword };
       await client
         .db(usersCollection.db)
         .collection(usersCollection.collection)
@@ -207,7 +208,6 @@ app.post("/home-page", async (request, response) => {
 
   let inputEmail = request.body.email;
   let inputPassword = request.body.password;
-  let movie1 = { name: "Notebook", year: 2000 };
   // console.log(
   //   "password: " + inputPassword + " password type: " + typeof inputPassword
   // );
