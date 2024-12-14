@@ -74,7 +74,28 @@
             font-weight: 500;
         }
 
+        .boxContent #otherDate {
+            width: 250px;
+            height: 60px;
+            font-size: 17px;
+            /* padding: 0 25px; */
+            margin-top: 7px;
+            margin-bottom: 7px;
+            border-radius: 30px;
+            box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+            transition: .3s;
+            border-width: 3px;
+            border-style: solid;
+            color: #57595b;
+            font-weight: 500;
+        }
+
         .boxContent #selectCountry {
+            font-size: 17px;
+            color: #57595b;
+        }
+
+        .boxContent #selectDate {
             font-size: 17px;
             color: #57595b;
         }
@@ -368,17 +389,18 @@
                     <option value="ZM">Zambia (ZM)</option>
                     <option value="ZW">Zimbabwe (ZW)</option>
                 </select>
-                <label><strong>Select a date: </strong></label>
+                <br>
+                <label id="selectDate">Select a date: </label>
                 <input type="date" id="otherDate" name="otherDate">
 
                 </form>
             </div>
             <div class="displayHolidays" id="displayHolidays">
                 <div>
-                    <button onclick="viewHolidays()"> View today's holiday(s) </button>
+                    <button onclick="viewHolidays()">     View today's holiday(s)     </button>
                 </div>
                 <div id="otherDayLink">
-                    <a href="/home-page">View the holidays</a>
+                    <a href="/home-page">View the holidays for today</a>
                 </div>
                 <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
             </div>
