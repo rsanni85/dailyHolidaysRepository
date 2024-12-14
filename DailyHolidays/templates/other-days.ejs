@@ -139,6 +139,33 @@
         .displayHolidays #otherDayLink {
             margin-left: auto;
         }
+
+        #table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #table td,
+        #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #787c81;
+            color: white;
+        }
     </style>
 </head>
 
@@ -390,21 +417,21 @@
                     <option value="ZW">Zimbabwe (ZW)</option>
                 </select>
                 <br>
-                <label id="selectDate"><strong> Select a date:    </strong></label>
+                <label id="selectDate"><strong> Select a date: </strong></label>
                 <input type="date" id="otherDate" name="otherDate">
 
                 </form>
             </div>
         </div>
-            <div class="displayHolidays" id="displayHolidays">
-                <div>
-                    <button onclick="viewHolidays()">     View holiday(s)     </button>
-                </div>
-                <div id="otherDayLink">
-                    <a href="/home-page">View the holidays for today</a>
-                </div>
-                <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
+        <div class="displayHolidays" id="displayHolidays">
+            <div>
+                <button onclick="viewHolidays()"> View holiday(s) </button>
             </div>
+            <div id="otherDayLink">
+                <a href="/home-page">View the holidays for today</a>
+            </div>
+            <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
+        </div>
     </div>
     <script>
         async function viewHolidays() {
@@ -431,10 +458,11 @@
                             displayString += `<div id="otherDayLink"><a href="/home-page">View the holidays for today</a></div>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         } else {
-                            displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
+                            // displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
+                            displayString = "<table><th>Holiday</th><th>Type</th>";
                             JSON.parse(JSON.stringify(result)).forEach(holiday =>
                                 displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
-                            displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
+                            displayString += `</table id="table"><br><button onclick="viewHolidays()">View holiday(s)</button>`;
                             displayString += `<div id="otherDayLink"><a href="/home-page">View the holidays for today</a></div>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         }
