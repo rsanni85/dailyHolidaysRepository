@@ -92,34 +92,11 @@ app.post("/process-registration", async (request, response) => {
     await client.connect();
     /* Inserting one person */
     let person = { name: userName, email: userEmail, password: userPassword };
-    let filter = { email: inputEmail };
-    let result = await client.db(usersCollection.db)
+    await client
+      .db(usersCollection.db)
       .collection(usersCollection.collection)
-      .findOne(filter);
-    if (result) {
-      let variables = {
-        portNumber: portNumber,
-        registrationStatus: "We found an account with this email. Want to log in instead?",
-      };
-      response.render("registration", variables);
-
-    } else {
-      let variables = {
-        portNumber: portNumber,
-        loginStatus: "",
-      };
-      await client
-        .db(usersCollection.db)
-        .collection(usersCollection.collection)
-        .insertOne(person);
-      response.render("login-page", variables);
-      //response.status(400).send(`<a href="http://localhost:${portNumber}/login-page">We couldn't verify this account. Please try again.</a>`);
-    }
-    // await client
-    //   .db(usersCollection.db)
-    //   .collection(usersCollection.collection)
-    //   .insertOne(person);
-    // response.render("login-page", variables);
+      .insertOne(person);
+    response.render("login-page", variables);
   } catch (e) {
     console.error(e);
   } finally {
