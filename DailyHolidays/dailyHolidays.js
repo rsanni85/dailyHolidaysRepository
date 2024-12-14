@@ -232,6 +232,7 @@ app.get("/view-favorite-holidays", async (request, response) => {
 });
 
 app.get("/other-days", (request, response) => {
+  console.log("I got here at least.")
   const variables = {
     portNumber: portNumber,
   }
