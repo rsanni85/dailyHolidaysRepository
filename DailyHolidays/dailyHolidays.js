@@ -225,7 +225,10 @@ app.post("/home-page", async (request, response) => {
 });
 
 app.get("/home-page", (req, res) => {
+  const apiKey = process.env.DAILY_HOLIDAYS_API_KEY;
+
   const variables = {
+    holidayApiKey: apiKey,
     portNumber: portNumber,
   };
   res.render("home-page", variables);
