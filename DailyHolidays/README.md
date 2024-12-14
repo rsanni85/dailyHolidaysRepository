@@ -1,6 +1,6 @@
-Submitted by: Rodiat Sanni (directory id: rsanni85)
-Group Members: Rodiat Sanni (rsanni85)
-App Description: Allow users to view holidays on given dates in any country and store their favorite holidays.
-YouTube Video Link: https://www.youtube.com/MyAmazingAPP
-APIs: Public Holidays (https://docs.abstractapi.com/holidays?_gl=1*mgru9b*_gcl_au*MzMxMDE3NDIuMTczMzk0Mjg1OA..),        SoundApp (http:notreadlsoundapp.what)
-Contact Email:  rsanni85@terpmail.umd.edu
+**Submitted by:** Rodiat Sanni (directory id: rsanni85)
+**Group Members:** Rodiat Sanni (rsanni85)
+**App Description:** Users can explore daily holidays celebrated in countries worldwide, with the option to check holidays for specific dates. If a holiday exists for the selected country and date, a table will display its name and type (e.g., public holiday, religious holiday, etc). In the absence of a holiday, the application lightens the mood by showing a joke instead.
+**YouTube Video Link:** https://www.youtube.com/MyAmazingAPP
+**APIs:** Public Holidays ([https://docs.abstractapi.com/holidays?]), Jokes ([https://jokeapi.dev/])
+**Contact Email:**  [rsanni85@terpmail.umd.edu]
