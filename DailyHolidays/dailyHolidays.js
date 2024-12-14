@@ -99,22 +99,27 @@ app.post("/process-registration", async (request, response) => {
     if (result) {
       let variables = {
         portNumber: portNumber,
-        loginStatus: "",
-      };
-      response.render("login-page", variables);
-    } else {
-      let variables = {
-        portNumber: portNumber,
         registrationStatus: "We found an account with this email. Want to log in instead?",
       };
       response.render("registration", variables);
-      //response.status(400).send(`<a href="http://localhost:${portNumber}/login-page">We couldn't verify this account. Please try again.</a>`);
-    }
-    await client
+
+    } else {
+      let variables = {
+        portNumber: portNumber,
+        loginStatus: "",
+      };
+      await client
       .db(usersCollection.db)
       .collection(usersCollection.collection)
       .insertOne(person);
     response.render("login-page", variables);
+      //response.status(400).send(`<a href="http://localhost:${portNumber}/login-page">We couldn't verify this account. Please try again.</a>`);
+    }
+    // await client
+    //   .db(usersCollection.db)
+    //   .collection(usersCollection.collection)
+    //   .insertOne(person);
+    // response.render("login-page", variables);
   } catch (e) {
     console.error(e);
   } finally {
