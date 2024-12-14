@@ -48,6 +48,7 @@
         }
 
         .boxContent {
+            display: flex;
             justify-content: center;
             border-style: solid;
             border-color: blue;
@@ -74,6 +75,7 @@
         }
 
         .displayHolidays {
+            display: flex;
             justify-content: center;
             border-style: solid;
             border-width: 4px;
@@ -336,6 +338,7 @@
             </div>
             <div class="displayHolidays" id="displayHolidays">
                 <button onclick="viewHolidays()">View today's holiday(s)</button>
+                <br>
                 <a href="/other-days">View the holidays for another day</a>
                 <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
             </div>
@@ -367,13 +370,14 @@
                             displayString += "The chosen country has no holidays today. Check out the stats for another country!<br>For now, enjoy this joke:<br>";
                             displayString += `<h4>${jokeArr[0]}</h4><br><h4>${jokeArr[1]}<h4>`;
                             displayString += `<br><button onclick="viewHolidays()">View holiday(s)</button>`;
+                            displayString += `<br><a id="viewOtherDay" href="/other-days">View the holidays for another day</a>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         } else {
                             displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
                             JSON.parse(JSON.stringify(result)).forEach(holiday =>
                                 displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
                             displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
-                            displayString += `<a id="viewOtherDay" href="/other-days">View the holidays for another day</a>`;
+                            displayString += `<br><a id="viewOtherDay" href="/other-days">View the holidays for another day</a>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         }
 
