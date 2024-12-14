@@ -81,11 +81,6 @@ app.post("/process-registration", async (request, response) => {
   userName = request.body.name;
   userEmail = request.body.email;
   userPassword = request.body.password;
-
-  const variables = {
-    portNumber: portNumber,
-    loginStatus: "",
-  };
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -96,6 +91,24 @@ app.post("/process-registration", async (request, response) => {
     await client.connect();
     /* Inserting one person */
     let person = { name: userName, email: userEmail, password: userPassword };
+    let filter = { email: inputEmail};
+    let result = await client.db(usersCollection.db)
+      .collection(usersCollection.collection)
+      .findOne(filter);
+    if (result) {
+      let variables = {
+        portNumber: portNumber,
+        loginStatus: "",
+      };
+      response.render("login-page", variables);
+    } else {
+      let variables = {
+        portNumber: portNumber,
+        registrationStatus: "We found an account with this email. Want to log in instead?",
+      };
+      response.render("registration", variables);
+      //response.status(400).send(`<a href="http://localhost:${portNumber}/login-page">We couldn't verify this account. Please try again.</a>`);
+    }
     await client
       .db(usersCollection.db)
       .collection(usersCollection.collection)
