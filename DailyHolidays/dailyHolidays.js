@@ -224,6 +224,13 @@ app.post("/home-page", async (request, response) => {
   }
 });
 
+app.get("/home-page", (req, res) => {
+  const variables = {
+    portNumber: portNumber,
+  };
+  res.render("home-page", variables);
+});
+
 app.get("/view-favorite-holidays", async (request, response) => {
   const variables = {
     portNumber: portNumber,
