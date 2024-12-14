@@ -84,6 +84,7 @@ app.post("/process-registration", async (request, response) => {
 
   const variables = {
     portNumber: portNumber,
+    loginStatus: "",
   };
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
