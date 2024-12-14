@@ -276,12 +276,12 @@
 
             displayString = "";
             holidayData
-                .then(result => {
+                .then(async result => {
                     //console.log("RESULT: " + JSON.stringify(result));
                     console.log("H");
                     if (Array.isArray(result)) {
                         if (JSON.parse(JSON.stringify(result)).length == 0) {
-                            let jokeArr = fetchRandomJoke();
+                            let jokeArr = await fetchRandomJoke();
                             displayString += "The chosen country has no holidays today. Check out the stats for another country!<br>For now, enjoy this joke:<br>";
                             displayString += `<h4>${jokeArr[0]}</h4><br><h4>${jokeArr[1]}<h4>`;
                             displayString += `<br><button onclick="viewHolidays()">View holiday(s)</button>`;
