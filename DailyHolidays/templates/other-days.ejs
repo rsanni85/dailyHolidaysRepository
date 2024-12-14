@@ -118,16 +118,14 @@
         .displayHolidays #otherDayLink {
             margin-left: auto;
         }
-
     </style>
 </head>
 
 <body>
     <div class="homeBox">
-    <div class="homeHeader"></div>
-    <h3>View Daily Holidays from Other Days</h3>
-</div>
-    <div>
+        <div class="homeHeader">
+            <h3>View Daily Holidays from Other Days</h3>
+        </div>
         <!-- <a href="/home-page">View the holidays for today</a> -->
         <br>
         <!--
@@ -135,9 +133,8 @@
         <br>
         -->
         <div class="boxContent">
-        <div id="otherDaysHolidays">
-            <form>
-                <label><strong>Select a country: </strong></label>
+            <div id="otherDaysHolidays">
+                <label id="selectCountry"><strong>Select a country: </strong></label>
                 <select id="country">
                     <option value="AF">Afghanistan (AF)</option>
                     <option value="AL">Albania (AL)</option>
@@ -374,20 +371,19 @@
                 <label><strong>Select a date: </strong></label>
                 <input type="date" id="otherDate" name="otherDate">
 
-            </form>
-        </div>
-        <div id="displayHolidays">
-            <div>
-                <button onclick="viewHolidays()">    View today's holiday(s)    </button>
+                </form>
             </div>
-            <div id="otherDayLink">
-                <a href="/other-days">View the holidays</a>
+            <div class="displayHolidays" id="displayHolidays">
+                <div>
+                    <button onclick="viewHolidays()"> View today's holiday(s) </button>
+                </div>
+                <div id="otherDayLink">
+                    <a href="/home-page">View the holidays</a>
+                </div>
+                <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
             </div>
-            <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
         </div>
     </div>
-    </div>
-</div>
     <script>
         async function viewHolidays() {
             let today = document.getElementById("otherDate").value;
