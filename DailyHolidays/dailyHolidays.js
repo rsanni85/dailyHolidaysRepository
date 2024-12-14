@@ -184,6 +184,7 @@ app.post("/home-page", async (request, response) => {
 
   let inputEmail = request.body.email;
   let inputPassword = request.body.password;
+  let movie1 = {name: "Notebook", year: 2000};
   // console.log(
   //   "password: " + inputPassword + " password type: " + typeof inputPassword
   // );
@@ -192,14 +193,31 @@ app.post("/home-page", async (request, response) => {
   try {
     await client.connect();
 
-    /* Checks if the user's email/password combo is in the database */
-    let filter = { email: inputEmail, password: inputPassword };
-    let result = await client
+    /* Check if a user has an existing account*/
+    let filterRegister = {email: inputEmail};
+    let resultRegister = await client
       .db(usersCollection.db)
       .collection(usersCollection.collection)
-      .findOne(filter);
+      .findOne(filterRegister);
+      if (resultRegister) {
+        let registrationStatus = "We found an account with this email. Want to log in instead?";
+        let updatedVariables = {
+          portNumber: portNumber,
+          registrationStatus: registrationStatus,
+        };
+        response.render("registration", updatedVariables);
+      } else {
+        response.render("home-page", variables);
+      }
+
+    /* Checks if the user's email/password combo is in the database */
+    let filterLogin = { email: inputEmail, password: inputPassword };
+    let resultLogin = await client
+      .db(usersCollection.db)
+      .collection(usersCollection.collection)
+      .findOne(filterLogin);
     //console.log("RESULT IS: " + result);
-    if (result) {
+    if (resultLogin) {
       console.log("Successfully logged in.");
       response.render("home-page", variables);
     } else {
@@ -218,8 +236,8 @@ app.post("/home-page", async (request, response) => {
     console.error(e);
   } finally {
     await client.close();
-  }
-});
+  }});
+
 
 app.get("/home-page", (req, res) => {
   const apiKey = process.env.DAILY_HOLIDAYS_API_KEY;
