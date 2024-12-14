@@ -28,10 +28,10 @@
         .homeBox{
             display: flex;
             justify-content: center;
-            /* flex-direction: column; */
+            flex-direction: column;
             width: 900px;
             height: 480px;
-            /* padding: 30px; */
+            padding: 30px;
             border-width: 3px;
             border-color: rgba(225, 231, 233, 0.678);
             border-style: solid;
@@ -297,9 +297,10 @@
                     <option value="ZM">Zambia (ZM)</option>
                     <option value="ZW">Zimbabwe (ZW)</option>
                 </select>
-                <button onclick="viewHolidays()">View today's holiday(s)</button>
+                <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
             </div>
             <div class="displayHolidays" id="displayHolidays">
+                <button onclick="viewHolidays()">View today's holiday(s)</button>
                 <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
             </div>
         </div>
