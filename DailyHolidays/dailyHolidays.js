@@ -193,22 +193,22 @@ app.post("/home-page", async (request, response) => {
   try {
     await client.connect();
 
-    /* Check if a user has an existing account*/
-    let filterRegister = {email: inputEmail};
-    let resultRegister = await client
-      .db(usersCollection.db)
-      .collection(usersCollection.collection)
-      .findOne(filterRegister);
-      if (resultRegister) {
-        let registrationStatus = "We found an account with this email. Want to log in instead?";
-        let updatedVariables = {
-          portNumber: portNumber,
-          registrationStatus: registrationStatus,
-        };
-        response.render("registration", updatedVariables);
-      } else {
-        response.render("home-page", variables);
-      }
+    // /* Check if a user has an existing account*/
+    // let filterRegister = {email: inputEmail};
+    // let resultRegister = await client
+    //   .db(usersCollection.db)
+    //   .collection(usersCollection.collection)
+    //   .findOne(filterRegister);
+    //   if (resultRegister) {
+    //     let registrationStatus = "We found an account with this email. Want to log in instead?";
+    //     let updatedVariables = {
+    //       portNumber: portNumber,
+    //       registrationStatus: registrationStatus,
+    //     };
+    //     response.render("registration", updatedVariables);
+    //   } else {
+    //     response.render("home-page", variables);
+    //   }
 
     /* Checks if the user's email/password combo is in the database */
     let filterLogin = { email: inputEmail, password: inputPassword };
