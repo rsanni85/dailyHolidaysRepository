@@ -58,7 +58,7 @@
         }
 
         .boxContent #country {
-            width: 230px;
+            width: 250px;
             height: 60px;
             font-size: 17px;
             /* padding: 0 25px; */
@@ -404,8 +404,8 @@
                     if (Array.isArray(result)) {
                         if (JSON.parse(JSON.stringify(result)).length == 0) {
                             let jokeArr = await fetchRandomJoke();
-                            displayString += "The chosen country has no holidays today. Check out the stats for another country!<br>For now, enjoy this joke:<br>";
-                            displayString += `<h4>${jokeArr[0]}</h4><br><h4>${jokeArr[1]}<h4>`;
+                            displayString += "The chosen country has no holidays today. Check out the stats for another country!<br><br>For now, enjoy this joke:<br>";
+                            displayString += `<br><h4>${jokeArr[0]}</h4><br><h4>${jokeArr[1]}<h4>`;
                             displayString += `<br><button onclick="viewHolidays()">View holiday(s)</button>`;
                             displayString += `<br><a id="viewOtherDay" href="/other-days">View the holidays for another day</a>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
