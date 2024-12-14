@@ -29,12 +29,12 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            width: 650px;
+            width: 700px;
             height: 480px;
             padding: 30px;
+            border-style: solid;
             border-width: 3px;
             border-color: rgba(255, 255, 255, 0);
-            border-style: solid;
             border-radius: 10px;
             background-color: rgb(237, 246, 247);
         }
@@ -115,6 +115,7 @@
     <div class="homeBox">
         <div class="homeHeader">
             <h3>Today's Holidays Around The World</h3>
+            <br>
         </div>
         <div class="boxContent">
             <br>
@@ -360,11 +361,13 @@
                 <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
             </div>
             <div class="displayHolidays" id="displayHolidays">
-                <button onclick="viewHolidays()">View today's holiday(s)</button>
+                <div>
+                    <button onclick="viewHolidays()">View today's holiday(s)</button>
+                </div>
+                <div>
+                    <a href="/other-days">View the holidays for another day</a>
+                </div>
                 <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
-            </div>
-            <div>
-                <a href="/other-days">View the holidays for another day</a>
             </div>
         </div>
     </div>
