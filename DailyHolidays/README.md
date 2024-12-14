@@ -2,7 +2,7 @@
 
 **Group Members:** Rodiat Sanni (rsanni85)
 
-**App Description:** Users can discover daily holidays celebrated worldwide or explore holidays on specific dates. If a holiday exists for the chosen country and date, its name and type (e.g., public or religious) are displayed in a table. Otherwise, a joke is shown to lighten the mood.
+**App Description:** Users can explore holidays worldwide for any date, viewing their name and type. If no holiday exists, a joke is displayed to keep things fun.
 
 **Application Link**: [https://dailyholidays-codejabi.onrender.com]
 
