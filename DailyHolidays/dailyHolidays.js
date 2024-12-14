@@ -184,7 +184,7 @@ app.post("/home-page", async (request, response) => {
 
   let inputEmail = request.body.email;
   let inputPassword = request.body.password;
-  let movie1 = {name: "Notebook", year: 2000};
+  let movie1 = { name: "Notebook", year: 2000 };
   // console.log(
   //   "password: " + inputPassword + " password type: " + typeof inputPassword
   // );
@@ -192,51 +192,56 @@ app.post("/home-page", async (request, response) => {
   const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
   try {
     await client.connect();
-
-    // /* Check if a user has an existing account*/
-    // let filterRegister = {email: inputEmail};
-    // let resultRegister = await client
-    //   .db(usersCollection.db)
-    //   .collection(usersCollection.collection)
-    //   .findOne(filterRegister);
-    //   if (resultRegister) {
-    //     let registrationStatus = "We found an account with this email. Want to log in instead?";
-    //     let updatedVariables = {
-    //       portNumber: portNumber,
-    //       registrationStatus: registrationStatus,
-    //     };
-    //     response.render("registration", updatedVariables);
-    //   } else {
-    //     response.render("home-page", variables);
-    //   }
-
-    /* Checks if the user's email/password combo is in the database */
-    let filterLogin = { email: inputEmail, password: inputPassword };
-    let resultLogin = await client
-      .db(usersCollection.db)
-      .collection(usersCollection.collection)
-      .findOne(filterLogin);
-    //console.log("RESULT IS: " + result);
-    if (resultLogin) {
-      console.log("Successfully logged in.");
-      response.render("home-page", variables);
-    } else {
-      let alertString = `Incorrect email and/or password. Please try again.`;
-
-      const failVariables = {
-        portNumber: portNumber,
-        loginStatus: alertString,
-      };
-
-      //response.status(400).send(`<a href="/login-page">We couldn't verify this account. Please try again.</a>`);
-      //response.status(400).send(alertString);
-      response.render("login-page", failVariables);
+    if ('registration' in request.body) {
+      /* Check if a user has an existing account*/
+      let filterRegister = { email: inputEmail };
+      let resultRegister = await client
+        .db(usersCollection.db)
+        .collection(usersCollection.collection)
+        .findOne(filterRegister);
+      if (resultRegister) {
+        let registrationStatus = "We found an account with this email. Want to log in instead?";
+        let updatedVariables = {
+          portNumber: portNumber,
+          registrationStatus: registrationStatus,
+        };
+        response.render("registration", updatedVariables);
+      } else {
+        response.render("home-page", variables);
+      }
     }
+
+    if ('login' in request.body) {
+      /* Checks if the user's email/password combo is in the database */
+      let filterLogin = { email: inputEmail, password: inputPassword };
+      let resultLogin = await client
+        .db(usersCollection.db)
+        .collection(usersCollection.collection)
+        .findOne(filterLogin);
+      //console.log("RESULT IS: " + result);
+      if (resultLogin) {
+        console.log("Successfully logged in.");
+        response.render("home-page", variables);
+      } else {
+        let alertString = `Incorrect email and/or password. Please try again.`;
+
+        const failVariables = {
+          portNumber: portNumber,
+          loginStatus: alertString,
+        };
+
+        //response.status(400).send(`<a href="/login-page">We couldn't verify this account. Please try again.</a>`);
+        //response.status(400).send(alertString);
+        response.render("login-page", failVariables);
+      }
+    }
+
   } catch (e) {
     console.error(e);
   } finally {
     await client.close();
-  }});
+  }
+});
 
 
 app.get("/home-page", (req, res) => {
