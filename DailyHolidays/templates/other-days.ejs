@@ -397,7 +397,7 @@
             </div>
             <div class="displayHolidays" id="displayHolidays">
                 <div>
-                    <button onclick="viewHolidays()">     View today's holiday(s)     </button>
+                    <button onclick="viewHolidays()">     View holiday(s)     </button>
                 </div>
                 <div id="otherDayLink">
                     <a href="/home-page">View the holidays for today</a>
@@ -427,13 +427,15 @@
                     if (Array.isArray(result)) {
                         if (JSON.parse(JSON.stringify(result)).length == 0) {
                             displayString += "The chosen country has no holidays today. Check out the stats for another country!";
-                            displayString += `<br><button onclick="viewHolidays()">View today's holiday(s)</button>`;
+                            displayString += `<br><button onclick="viewHolidays()">View holiday(s)</button>`;
+                            displayString += `<div id="otherDayLink"><a href="/home-page">View the holidays for today</a></div>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         } else {
                             displayString = "<table border='1'><th>Holiday</th><th>Type</th>";
                             JSON.parse(JSON.stringify(result)).forEach(holiday =>
                                 displayString += `<tr><td>${holiday.name}</td><td>${holiday.type}</td></tr>`);
-                            displayString += `</table><br><button onclick="viewHolidays()">View today's holiday(s)</button>`;
+                            displayString += `</table><br><button onclick="viewHolidays()">View holiday(s)</button>`;
+                            displayString += `<div id="otherDayLink"><a href="/home-page">View the holidays for today</a></div>`;
                             document.getElementById("displayHolidays").innerHTML = displayString;
                         }
                         // JSON.parse(JSON.stringify(result)).forEach(holiday =>
