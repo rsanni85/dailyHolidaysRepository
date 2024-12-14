@@ -29,7 +29,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            width: 600px;
+            width: 650px;
             height: 480px;
             padding: 30px;
             border-width: 3px;
@@ -47,6 +47,17 @@
             text-align: center;
         }
 
+        .boxContent{
+            justify-content: center;
+        }
+
+        .boxContent #country{
+            border-width: 3px;
+            border-style: solid;
+            border-radius: 10px;
+            font-size: 3rem;
+        }
+
     </style>
 </head>
 
@@ -55,7 +66,7 @@
         <div class="homeHeader">
             <h3>Today's Holidays Around The World</h3>
         </div>
-        <div>
+        <div class="boxContent">
             <a href="/other-days">View the holidays for another day</a>
             <br>
             <!--
