@@ -21,8 +21,34 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* background: #dfdfdf; */
-            background-image: url("./light_background-wallpaper-1920x1080.jpg");
+            background: url("https://i.ibb.co/DMz4GSP/light-background-wallpaper-1920x1080.jpg");
+            background-size: cover;
+        }
+
+        .homeBox{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 450px;
+            height: 480px;
+            padding: 30px;
+            border-width: 3px;
+            border-color: rgba(225, 231, 233, 0.678);
+            border-style: solid;
+            border-radius: 10px;
+            background-color: rgb(226, 229, 229);
+        }
+
+        .displayHolidays{
+            background-color: rgb(156, 153, 153);
+            background-image: url("./aesthetic-8-bit-heart-love-logo-symbol-png.png");
+        }
+
+        .homeHeader{
+            color: #57595b;
+            font-size: 30px;
+            font-weight: 400;
+            text-align: center;
         }
 
     </style>
@@ -275,10 +301,10 @@
                     <option value="ZM">Zambia (ZM)</option>
                     <option value="ZW">Zimbabwe (ZW)</option>
                 </select>
-
+                <button onclick="viewHolidays()">View today's holiday(s)</button>
             </div>
             <div id="displayHolidays">
-                <button onclick="viewHolidays()">View today's holiday(s)</button>
+                <!-- <button onclick="viewHolidays()">View today's holiday(s)</button> -->
             </div>
         </div>
     </div>
