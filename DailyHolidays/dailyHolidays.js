@@ -73,6 +73,7 @@ app.get("/", (request, response) => {
 app.get("/registration", async (request, response) => {
   const variables = {
     portNumber: portNumber,
+    registrationStatus: "",
   };
   response.render("registration", variables);
 });
